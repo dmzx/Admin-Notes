@@ -1,0 +1,42 @@
+{
+	"name": "dmzx/adminnotes",
+	"type": "phpbb-extension",
+	"description": "Adds Admin Notes in ACP page.",
+	"homepage": "https://www.dmzx-web.net",
+	"version": "1.0.0",
+	"time": "2020-04-21",
+	"keywords": [
+		"phpbb",
+		"extension",
+		"adminnotes"
+	],
+	"license": "GPL-2.0-only",
+	"authors": [
+		{
+			"name": "dmzx",
+			"homepage": "https://www.dmzx-web.net",
+			"email": "info@dmzx-web.net",
+			"role": "Extension Developer"
+		}
+	],
+	"require": {
+		"php": ">=7.1.3",
+		"composer/installers": "~1.0",
+		"phpbb/phpbb": ">=3.3.0,<4.4.0@dev"
+	},
+	"require-dev": {
+		"phpbb/epv": "dev-master"
+	},
+	"extra": {
+		"display-name": "Admin Notes",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.3.0,<4.4.0@dev"
+		},
+		"version-check": {
+			"host": "www.dmzx-web.net",
+			"directory": "/versions",
+			"filename": "adminnotes_version.json",
+			"ssl": true
+		}
+	}
+}

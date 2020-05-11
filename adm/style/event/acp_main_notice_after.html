@@ -1,0 +1,18 @@
+{% INCLUDECSS '@dmzx_adminnotes/css/adminnotes.css' %}
+
+<fieldset>
+	<legend>{{ lang('ACP_ADMINNOTES_TITLE') }}</legend>
+	{% if S_ADMINNOTES_EDIT %}
+		<form method="post" action="{{ U_ACTION }}">
+			<textarea class="inputbox full" id="adminnotes_notes" name="adminnotes_notes" placeholder="">{{ ADMINNOTES_EDIT }}</textarea>
+			<fieldset class="quick">
+				<input id="submit_adminnotes" name="submit_adminnotes" type="submit" value="{{ lang('SUBMIT') }}">
+			</fieldset>
+		</form>
+	{% else %}
+		<div>{{ ADMINNOTES_NOTES }}</div>
+		<div class="adminnotes-action">
+			<a href="{{ U_ACTION ~ '&edit_adminnotes_notes=1' }}"><i class="icon fa-pencil fa-fw"></i></a>
+		</div>
+	{% endif %}
+</fieldset>
