@@ -2,5 +2,5 @@ services:
     _defaults:
         autowire: true
     dmzx.adminnotes.listener:
-        class: dmzx\adminnotes\event\listener
-        tags: [{ name: event.listener }]
+        class: 'dmzx\adminnotes\event\listener'
+        tags: [{ name: 'event.listener' }]

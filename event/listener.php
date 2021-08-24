@@ -10,45 +10,51 @@
 
 namespace dmzx\adminnotes\event;
 
+use phpbb\config\db_text;
+use phpbb\request\request;
+use phpbb\template\template;
+use phpbb\textformatter\s9e\parser;
+use phpbb\textformatter\s9e\renderer;
+use phpbb\textformatter\s9e\utils;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class listener implements EventSubscriberInterface
 {
-	/** @var \phpbb\config\db_text */
+	/** @var db_text */
 	protected $config_text;
 
-	/** @var \phpbb\textformatter\s9e\parser */
+	/** @var parser */
 	protected $parser;
 
-	/** @var \phpbb\textformatter\s9e\renderer */
+	/** @var renderer */
 	protected $renderer;
 
-	/** @var \phpbb\request\request */
+	/** @var request */
 	protected $request;
 
-	/** @var \phpbb\template\template */
+	/** @var template */
 	protected $template;
 
-	/** @var \phpbb\textformatter\s9e\utils */
+	/** @var utils */
 	protected $utils;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param \phpbb\config\db_text					$config_text		Config text object
-	 * @param \phpbb\textformatter\s9e\parser		$parser				Textformatter parser object
-	 * @param \phpbb\textformatter\s9e\renderer		$renderer			Textformatter renderer object
-	 * @param \phpbb\request\request				$request			Request object
-	 * @param \phpbb\template\template				$template			Template object
-	 * @param \phpbb\textformatter\s9e\utils		$utils				Textformatter utilities object
+	 * @param db_text		$config_text		Config text object
+	 * @param parser		$parser				Textformatter parser object
+	 * @param renderer		$renderer			Textformatter renderer object
+	 * @param request		$request			Request object
+	 * @param template		$template			Template object
+	 * @param utils			$utils				Textformatter utilities object
 	 */
 	public function __construct(
-		\phpbb\config\db_text $config_text,
-		\phpbb\textformatter\s9e\parser $parser,
-		\phpbb\textformatter\s9e\renderer $renderer,
-		\phpbb\request\request $request,
-		\phpbb\template\template $template,
-		\phpbb\textformatter\s9e\utils $utils
+		db_text $config_text,
+		parser $parser,
+		renderer $renderer,
+		request $request,
+		template $template,
+		utils $utils
 	)
 	{
 		$this->config_text		= $config_text;
@@ -81,7 +87,6 @@ class listener implements EventSubscriberInterface
 		$this->template->assign_vars([
 			'ADMINNOTES_NOTES'		=> $this->renderer->render(htmlspecialchars_decode($adminnotes, ENT_COMPAT)),
 			'ADMINNOTES_EDIT'		=> $this->utils->unparse($adminnotes),
-
 			'S_ADMINNOTES_EDIT'		=> $this->request->is_set('edit_adminnotes_notes'),
 		]);
 	}

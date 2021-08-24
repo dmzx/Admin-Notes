@@ -10,7 +10,9 @@
 
 namespace dmzx\adminnotes\migrations;
 
-class install_adminnotes extends \phpbb\db\migration\container_aware_migration
+use phpbb\db\migration\container_aware_migration;
+
+class install_adminnotes extends container_aware_migration
 {
 	public function effectively_installed()
 	{
